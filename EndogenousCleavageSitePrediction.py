@@ -75,6 +75,7 @@ def plot_absolute_differences(cs_true, cs_pred, file_name):
 
 def run_per_model(endogenous, model_name):
     cs_predicted = endogenous.Sequence.apply(lambda x: predict_per_rec(x, model_name))
+    cs_predicted.to_pickle(model_name + '_endogenous_predicted_cs.pkl')
     plot_absolute_differences(endogenous.CS_pos, cs_predicted, model_name + '_endogenous_cs_absolute_differences')
     return
 
@@ -82,8 +83,11 @@ def run_per_model(endogenous, model_name):
 def main():
     model_names = ['cnn', 'xgb', 'kmer']
     endogenous = pd.read_csv('Supplementary_Table_8.tab', sep='\t').set_index('GeneName')
-    for model_name in model_names:
-        run_per_model(endogenous, model_name)
+    # for model_name in model_names:
+    #     run_per_model(endogenous, model_name)
+    model_name = model_names[0]
+    print model_name
+    run_per_model(endogenous, model_name)
     return
 
 
