@@ -32,7 +32,7 @@ def prepare_input(df):
 
 
 def train_expression_on_full(params):
-    data = pd.read_csv('Supplementary_Table_9.tab', sep='\t')
+    data = pd.read_csv('Supplemental_Table_9.tab', sep='\t', skiprows=1)
     data = data.applymap(lambda x: pd.to_numeric(x, errors='ignore'))  # Make sure that numeric types are numeric
     df_train = data[data.Fold.isin(range(10))]
     df_test = data[data.Fold.isin(['Test'])]

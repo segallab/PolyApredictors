@@ -82,7 +82,7 @@ def run_per_model(endogenous, model_name):
 
 def main():
     model_names = ['cnn', 'xgb', 'kmer']
-    endogenous = pd.read_csv('Supplementary_Table_8.tab', sep='\t').set_index('GeneName')
+    endogenous = pd.read_csv('Supplemental_Table_8.tab', sep='\t', skiprows=1).set_index('GeneName')
     # for model_name in model_names:
     #     run_per_model(endogenous, model_name)
     model_name = model_names[0]
